@@ -3,11 +3,13 @@ import Cookies from 'universal-cookie';
 import axios from 'axios';
 import signinImage from '../assets/signup.jpg';
 
+const cookies = new Cookies();
 const initialState = {
     fullName: '',
     username: '',
     password: '',
     confirmPassword: '',
+    phoneNumber: '',
     AvatarURL: '',
 }
 const Auth = () => {
@@ -16,9 +18,27 @@ const Auth = () => {
     const handleChange = (event) => {
         setForm({...form, [event.target.name]: event.target.value});
     };
-    const handleSubmit = (event) => {
+    const handleSubmit = async(event) => {
         event.preventDefault();
-        console.log(form);
+        const {fullName, username, password, phoneNumber, AvatarURL} = form;
+        
+        const URL = 'http://localhost:8080/auth';
+        //getting data from the backend and store into cookies
+        const {data: {token, userID, hashedPassword}} = await axios.post(`${URL}/${isSignup ? 'signup' : 'login'}`, {
+            username, password, fullName, phoneNumber, AvatarURL,
+        });
+        cookies.set('token', token);
+        cookies.set('username', username);
+        cookies.set('fullName', fullName);
+        cookies.set('userID', userID);
+
+        if(isSignup) {
+            cookies.set('phoneNumber', phoneNumber);
+            cookies.set('AvatarURL', AvatarURL);
+            cookies.set('hashedPassword', hashedPassword);
+        }
+        //reload so authToken allows us to chat instead of returning auth
+        window.location.reload();
 
     }
     const switchMode = () => {

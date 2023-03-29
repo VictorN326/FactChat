@@ -6,8 +6,19 @@ import {ChannelListContainer,ChannelContainer, Auth} from './components';
 import './App.css';
 const apiKey = process.env.API_KEY;
 const client = StreamChat.getInstance(apiKey);
-
-const authToken = false;
+const cookies = new Cookies();
+const authToken = cookies.get("token");
+if(authToken) {
+  client.connectUser({
+    id: cookies.get('userID'),
+    name: cookies.get('username'),
+    fullName: cookies.get('fullName'),
+    image: cookies.get('AvatarURL'),
+    // token: cookies.get('token');
+    hashedPassword: cookies.get('hashedPassword'),
+    phoneNumber: cookies.get('phoneNumber'),
+  }, authToken)
+}
 const App = () => {
   if(!authToken) return <Auth />
   return (
