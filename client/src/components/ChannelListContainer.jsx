@@ -3,7 +3,7 @@ import { Channel, ChannelList, useChatContext } from 'stream-chat-react';
 import Cookies from 'universal-cookie';
 
 import { ChannelSearch, TeamChannelList, TeamChannelPreview } from './';
-import HospitalIcon from '../assets/hospital.png';
+import HarmonyIcon from '../assets/harmony.png';
 import LogoutIcon from '../assets/logout.png';
 
 const cookies = new Cookies();
@@ -12,7 +12,7 @@ const SideBar = ({ logout }) => (
     <div className="channel-list__sidebar">
         <div className="channel-list__sidebar__icon1">
             <div className="icon1__inner">
-                <img src={HospitalIcon} alt="Hospital" width="30" />
+                <img src={HarmonyIcon} alt="Hospital" width="30" />
             </div>
         </div>
         <div className="channel-list__sidebar__icon2">
@@ -24,13 +24,24 @@ const SideBar = ({ logout }) => (
 );
 const CompanyHeader = () => (
     <div className='channel-list__header'>
-        <p className='channel-list__header__text'>FactChat</p>
+        <p className='channel-list__header__text'>Harmony</p>
     </div>
 )
 const ChannelListContainer = () => {
+    const logout = () => {
+       cookies.remove("token");
+       cookies.remove("userID");
+       cookies.remove("username");
+       cookies.remove("fullName");
+       cookies.remove("AvatarURL");
+       cookies.remove("hashedPassword");
+       cookies.remove("phoneNumber");
+
+       window.location.reload();
+    }
     return (
         <>
-            <SideBar />
+            <SideBar logout={logout}/>
             <div className='channel-list__list__wrapper'>
                 <CompanyHeader />
                 <ChannelSearch />

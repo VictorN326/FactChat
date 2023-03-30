@@ -1,5 +1,5 @@
 :root {
-    --primary-color: #005fff;
+    --primary-color: #b38cfb;
     --primary-color-alpha: #005fff1a;
   }
   
@@ -12,6 +12,10 @@
   
   #root {
     height: 100%;
+  }
+
+  .str-chat__channel-list {
+    background-color: transparent; /* Replace 'transparent' with your desired color */
   }
   
   .auth__form-container {
