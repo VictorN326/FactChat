@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Cookies from 'universal-cookie';
 import axios from 'axios';
-import signinImage from '../assets/signup.jpg';
+import signinImage from '../assets/signup.jpeg';
 
 const cookies = new Cookies();
 const initialState = {
@@ -22,7 +22,7 @@ const Auth = () => {
         event.preventDefault();
         const {username, password, phoneNumber, AvatarURL} = form;
         
-        const URL = 'http://localhost:8080/auth';
+        const URL = 'https://harmonychat.herokuapp.com/auth';
         //getting data from the backend and store into cookies
         const {data: {token, userID, hashedPassword, fullName}} = await axios.post(`${URL}/${isSignup ? 'signup' : 'login'}`, {
             username, password, fullName: form.fullName, phoneNumber, AvatarURL,
