@@ -8,10 +8,15 @@ Harmony is a messaging chat application similar to discord. The chat has a signu
 2. After making an account, you can sign in with the account you made and start chatting away! If you don't want to make your own account, that is okay!  I've made some preset accounts that you can use and try it out. They are all accounts with dummy phone numbers so don't worry about SMS notification. You can sign in with one of these four accounts or signin/signout with each of them (one at a time) to see the chat application functionality if no one is online.
 
   Sign in with these 5 accounts (yes they all have same passwords for simplicity):
+  
     1. username: BlackPinkLisa   pass: abc123
+    
     2. username: BlackPinkJisoo  pass: abc123
+    
     3. username: BlackPinkRose   pass: abc123
+    
     4. username: BlackPinkJennie pass: abc123
+    
     5. username: BaeSuzii        pass: abc123
     
     If you wantt to send giphys, the command is: /giphy [text]
