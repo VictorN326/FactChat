@@ -42,6 +42,7 @@ const UserList = ({setSelectedUsers}) => {
     const [users, setUsers] = useState([]);
     const [loading, setLoading] = useState(false);
     const [listEmpty, setListEmpty] = useState(false);
+    const [error, setError] = useState(false);
     useEffect(() => {
       const getUsers = async () => {
         if(loading) return;
@@ -60,13 +61,31 @@ const UserList = ({setSelectedUsers}) => {
                 setListEmpty(true);
             }
         } catch (error) {
-            console.log(error);
+            setError(true);
         }
         setLoading(false);
       }
       if(client) getUsers()
     }, [])
-    
+    if(error) {
+        return (
+            <ListContainer>
+                <div className='user-list__message'>
+                    Error loading. Please refresh and try again or log out and log back in!
+                </div>
+            </ListContainer>
+        )
+    }
+
+    if(listEmpty) {
+        return(
+            <ListContainer>
+                <div className='user-list__message'>
+                    No users found. 
+                </div>
+            </ListContainer>
+        )
+    }
   return (
     <ListContainer>
         {loading ? <div className='user-list__message'>

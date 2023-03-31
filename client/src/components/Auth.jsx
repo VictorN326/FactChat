@@ -20,12 +20,12 @@ const Auth = () => {
     };
     const handleSubmit = async(event) => {
         event.preventDefault();
-        const {fullName, username, password, phoneNumber, AvatarURL} = form;
+        const {username, password, phoneNumber, AvatarURL} = form;
         
         const URL = 'http://localhost:8080/auth';
         //getting data from the backend and store into cookies
-        const {data: {token, userID, hashedPassword}} = await axios.post(`${URL}/${isSignup ? 'signup' : 'login'}`, {
-            username, password, fullName, phoneNumber, AvatarURL,
+        const {data: {token, userID, hashedPassword, fullName}} = await axios.post(`${URL}/${isSignup ? 'signup' : 'login'}`, {
+            username, password, fullName: form.fullName, phoneNumber, AvatarURL,
         });
         cookies.set('token', token);
         cookies.set('username', username);
