@@ -27,7 +27,7 @@ const CompanyHeader = () => (
         <p className='channel-list__header__text'>Harmony</p>
     </div>
 )
-const ChannelListContainer = () => {
+const ChannelListContainer = ({isCreating, setIsCreating, setIsEditing, setCreateType}) => {
     const logout = () => {
        cookies.remove("token");
        cookies.remove("userID");
@@ -46,14 +46,24 @@ const ChannelListContainer = () => {
                 <CompanyHeader />
                 <ChannelSearch />
                 <ChannelList filters={{}} channelRenderFilterFn={()=> {}} List={(listProps) => (
-                    <TeamChannelList {...listProps} type="team"/>)}
+                    <TeamChannelList {...listProps} type="team"
+                      isCreating = {isCreating}
+                      setIsCreating = {setIsCreating}
+                      setIsEditing = {setIsEditing}
+                      setCreateType = {setCreateType}
+                    />)}
                     Preview={(previewProps) => (
                         <TeamChannelPreview {...previewProps} type="team" />
                     )}
                 />
 
                 <ChannelList filters={{}} channelRenderFilterFn={()=> {}} List={(listProps) => (
-                    <TeamChannelList {...listProps} type="messaging"/>)}
+                    <TeamChannelList {...listProps} type="messaging"
+                    isCreating = {isCreating}
+                    setIsCreating = {setIsCreating}
+                    setIsEditing = {setIsEditing}
+                    setCreateType = {setCreateType}
+                    />)}
                     Preview={(previewProps) => (
                         <TeamChannelPreview {...previewProps} type="messaging" />
                     )}
