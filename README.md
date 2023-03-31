@@ -1,5 +1,7 @@
 # Harmony
 
+Link to application: https://harmonybyvictor.netlify.app
+
 Harmony is a messaging chat application similar to discord. The chat has a signup and signin page for accounts and when logged in, you can add people into your direct messages or create a group chat channel. With the application, you are able to edit channels by editing the channel name or add new members if they have already signed up. With this feature, it only allows for the channel owners to edit the channels for security purposes. With this application, you cannot only send messages but also send emojis and gifs or giphys, reply to messages/threads, add photos and delete messages. It also integrates time stamps to see when the message was sent and also includes Twilio functionality that will send SMS notification to your phone if you signed up with your actual phone number. Although it's a cool functionality, I don't recommend it to everyone as you can get spammed with this if you are not online if someone decides to message you but you can always mute it or block it. 
 
 1. When Creating an account, you fill out the form and for avatar image URL, I recommend using online images that have image formats such as .jpg .jpeg and etc but it doesn't always guarantee for other avatar images on google. 
